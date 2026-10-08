@@ -2,72 +2,87 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
-import { BlueprintSvg } from "@/components/ui/BlueprintSvg";
+import Image from "next/image";
+import { ArchitecturalGrid } from "@/components/ui/ArchitecturalGrid";
 import { ClientLogos } from "@/components/ui/ClientLogos";
 
 const DynamicHeroStatue = dynamic(
   () => import("@/components/canvas/HeroStatue").then((mod) => mod.HeroStatueCanvas),
   {
     ssr: false,
-    loading: () => (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-12 h-12 rounded-full border-2 border-[#FF3700] border-t-transparent animate-spin" />
-      </div>
-    ),
+    loading: () => null,
   }
 );
 
 export function HeroSection() {
   return (
-    <section className="relative w-full bg-white text-black overflow-hidden flex flex-col justify-between min-h-screen">
-      {/* Top Navbar */}
-      <header className="relative z-30 w-full px-6 md:px-12 py-6 flex items-center justify-between">
-        {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-2 group cursor-pointer">
-          {/* Rocket Icon */}
-          <svg
-            viewBox="0 0 24 24"
-            className="w-7 h-7 fill-black text-black transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          >
-            <path d="M12.5 2C10.5 4 8.5 7 8 9.5L6.5 8 5 9.5l3.5 3.5c-.5 1.5-.5 3.5-.5 3.5s2 0 3.5-.5L15 19.5 16.5 18l-1.5-1.5c2.5-.5 5.5-2.5 7.5-4.5-1-6.5-6-9-10-10zm1.5 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-          </svg>
-          <span className="text-2xl font-extrabold tracking-tight text-black">Upthrust</span>
-        </a>
+    <section className="relative w-full h-screen max-h-screen min-h-[640px] bg-white text-black overflow-hidden flex flex-col justify-between select-none">
+      {/* Background Architectural Drafting Grid with Crosshairs */}
+      <ArchitecturalGrid />
 
-        {/* Contact Us Action */}
-        <a
-          href="#contact"
-          className="text-lg md:text-xl font-black tracking-tight text-[#FF3700] hover:text-[#d42e00] transition-colors uppercase"
+      {/* Full Architectural Hand Sketch Anchored Strictly in the Right-Bottom Corner of the Viewport */}
+      <div className="absolute right-[-40px] sm:right-[-60px] md:right-[-80px] lg:right-[-90px] bottom-16 sm:bottom-20 md:bottom-22 w-[380px] sm:w-[480px] md:w-[560px] lg:w-[640px] pointer-events-none z-1 select-none mix-blend-multiply opacity-80 translate-y-[8%]">
+        <Image
+          src="/sketch.png"
+          alt="Architectural minute hand sketch"
+          width={1024}
+          height={996}
+          className="w-full h-auto object-contain"
+          priority
+        />
+      </div>
+
+      {/* Top Navbar */}
+      <header className="relative z-30 w-full px-6 md:px-10 h-14 md:h-16 flex items-center justify-between shrink-0">
+        {/* Brand Logo */}
+        <div className="flex items-center gap-2.5 group cursor-pointer select-none">
+          <Image
+            src="/logo.png"
+            alt="Upthrust Logo"
+            width={28}
+            height={28}
+            className="w-6 h-6 md:w-7 md:h-7 object-contain transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            priority
+          />
+          <span className="text-xl md:text-2xl font-extrabold tracking-tight text-black">Upthrust</span>
+        </div>
+
+        {/* Orange Hamburger Menu Button matching Figma */}
+        <button
+          className="flex flex-col justify-center items-center gap-1.5 w-10 h-10 group cursor-pointer focus:outline-none"
+          aria-label="Navigation Menu"
         >
-          CONTACT US
-        </a>
+          <span className="w-7 h-[3.5px] bg-[#FF3700] rounded-full transition-transform group-hover:scale-x-110" />
+          <span className="w-7 h-[3.5px] bg-[#FF3700] rounded-full transition-transform group-hover:scale-x-110" />
+          <span className="w-7 h-[3.5px] bg-[#FF3700] rounded-full transition-transform group-hover:scale-x-110" />
+        </button>
       </header>
 
-      {/* Main Hero Visual Composition */}
-      <div className="relative w-full flex-1 flex flex-col justify-center items-center px-4 md:px-8 py-2 md:py-6 max-w-[1550px] mx-auto">
-        {/* Background Architectural Blueprint on right side */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[340px] md:w-[480px] lg:w-[620px] h-[340px] md:h-[480px] lg:h-[620px] pointer-events-none opacity-85 select-none -mr-16 md:-mr-12 lg:mr-0 z-0">
-          <BlueprintSvg className="w-full h-full" />
+      {/* Main Hero Poster Stage */}
+      <div className="relative z-10 w-full flex-1 flex flex-col justify-between items-center px-4 md:px-8 max-w-[1550px] mx-auto min-h-0 overflow-hidden">
+        {/* TOP WORDMARK: "BOLD DESIGN" (Exact Warped Vector Graphic from Figma) */}
+        <div className="relative z-10 w-full flex items-center justify-center shrink-0 pointer-events-none select-none pt-1">
+          <Image
+            src="/bold-design.png"
+            alt="BOLD DESIGN"
+            width={1024}
+            height={128}
+            className="w-[94%] max-w-[1360px] max-h-[12.5vh] h-auto object-contain"
+            priority
+          />
         </div>
 
-        {/* TOP HUGE TEXT: "BOLD DESIGN" */}
-        <div className="relative z-10 w-full text-center select-none pointer-events-none">
-          <h1 className="font-hero-bold text-[13vw] sm:text-[14vw] lg:text-[13.5vw] text-[#FF3700] tracking-[-0.05em] leading-[0.82] uppercase transform -skew-x-[6deg]">
-            BOLD DESIGN
-          </h1>
-        </div>
-
-        {/* MIDDLE SECTION WITH 3D STATUE & FLOATING ANNOTATIONS */}
-        <div className="relative z-20 w-full min-h-[380px] sm:min-h-[440px] md:min-h-[520px] lg:min-h-[580px] flex items-center justify-center my-[-2vw]">
-          {/* Left Annotations */}
-          <div className="absolute left-2 sm:left-6 md:left-12 lg:left-20 top-1/2 -translate-y-1/2 z-25 flex flex-col gap-10 md:gap-14 select-none">
+        {/* MIDDLE SECTION: 3D BUST CENTERPIECE & PRECISELY ALIGNED MICRO-COPY */}
+        <div className="relative z-20 w-full flex-1 min-h-0 flex items-center justify-center my-[-2vh]">
+          {/* Left Side Annotations */}
+          <div className="absolute left-[3%] sm:left-[5%] md:left-[7%] lg:left-[9%] top-1/2 -translate-y-1/2 z-25 flex flex-col gap-6 sm:gap-9 md:gap-12 select-none">
             {/* "STRATEGY IS CHEAPER" */}
             <div className="flex flex-col items-start">
-              <span className="text-xs sm:text-sm md:text-base font-extrabold tracking-wide text-black uppercase">
+              <span className="text-[11px] sm:text-xs md:text-sm font-extrabold tracking-wide text-black uppercase">
                 STRATEGY IS
               </span>
-              <div className="relative mt-1 inline-block">
-                <span className="text-xs sm:text-sm md:text-base font-extrabold tracking-wide text-black uppercase px-2 py-0.5">
+              <div className="relative mt-0.5 inline-block">
+                <span className="text-[11px] sm:text-xs md:text-sm font-extrabold tracking-wide text-black uppercase px-2 py-0.5">
                   CHEAPER
                 </span>
                 {/* Hand-drawn Orange Oval */}
@@ -92,19 +107,19 @@ export function HeroSection() {
 
             {/* "IDENTITY • EXPERIENCE • MOTION •" */}
             <div className="flex flex-col items-start gap-1">
-              <span className="text-base sm:text-xl md:text-2xl font-black tracking-tight text-black uppercase">
+              <span className="text-sm sm:text-lg md:text-xl font-black tracking-tight text-black uppercase">
                 IDENTITY •
               </span>
-              <span className="text-base sm:text-xl md:text-2xl font-black tracking-tight text-black uppercase">
+              <span className="text-sm sm:text-lg md:text-xl font-black tracking-tight text-black uppercase">
                 EXPERIENCE •
               </span>
               <div className="relative inline-block">
-                <span className="text-base sm:text-xl md:text-2xl font-black tracking-tight text-black uppercase">
+                <span className="text-sm sm:text-lg md:text-xl font-black tracking-tight text-black uppercase">
                   MOTION •
                 </span>
                 {/* Hand-drawn brush underline */}
                 <svg
-                  className="absolute -bottom-2 left-0 w-full h-3.5 pointer-events-none"
+                  className="absolute -bottom-1.5 left-0 w-full h-3 pointer-events-none"
                   viewBox="0 0 100 12"
                   fill="none"
                 >
@@ -120,55 +135,57 @@ export function HeroSection() {
           </div>
 
           {/* 3D IRIDESCENT BUST MODEL (CENTERPIECE) */}
-          <div className="relative z-20 w-[340px] sm:w-[440px] md:w-[540px] lg:w-[640px] h-[420px] sm:h-[500px] md:h-[600px] lg:h-[680px] pointer-events-auto cursor-grab active:cursor-grabbing">
+          <div className="relative z-20 w-[290px] sm:w-[390px] md:w-[470px] lg:w-[570px] h-[350px] sm:h-[450px] md:h-[530px] lg:h-[620px] pointer-events-auto cursor-grab active:cursor-grabbing">
             <DynamicHeroStatue />
           </div>
 
-          {/* Right Annotations: "THAT" + "COMFORTABLE IS EXPENSIVE" */}
-          <div className="absolute right-2 sm:right-6 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 z-25 flex flex-col items-start gap-12 select-none">
-            {/* "COMFORTABLE IS EXPENSIVE" */}
-            <div className="flex flex-col items-start">
-              <span className="text-sm sm:text-base md:text-lg font-black tracking-tight text-black uppercase">
-                COMFORTABLE
-              </span>
-              <div className="relative inline-block mt-0.5">
-                <span className="text-sm sm:text-base md:text-lg font-black tracking-tight text-black uppercase">
-                  IS EXPENSIVE
-                </span>
-                {/* Hand-drawn wavy underline */}
-                <svg
-                  className="absolute -bottom-2 left-0 w-full h-3 pointer-events-none"
-                  viewBox="0 0 110 10"
-                  fill="none"
-                >
-                  <path
-                    d="M 2 5 Q 12 1 22 5 T 42 5 T 62 5 T 82 5 T 108 5"
-                    stroke="#FF3700"
-                    strokeWidth="2.8"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
-            </div>
+          {/* "THAT" — Snug right next to the bust's neck and right shoulder */}
+          <div className="absolute left-[calc(50%+25px)] sm:left-[calc(50%+45px)] md:left-[calc(50%+70px)] lg:left-[calc(50%+95px)] top-[47%] -translate-y-1/2 z-15 pointer-events-none select-none">
+            <span className="font-sans font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#FF3700] tracking-[-0.03em] leading-none uppercase block">
+              THAT
+            </span>
+          </div>
 
-            {/* Giant "THAT" next to bust */}
-            <div className="mt-2 pointer-events-none">
-              <span className="font-hero-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-[#FF3700] tracking-tight uppercase transform -skew-x-[6deg] block">
-                THAT
+          {/* "COMFORTABLE IS EXPENSIVE" — Moved to the right */}
+          <div className="absolute right-[2%] sm:right-[4%] md:right-[6%] lg:right-[8%] top-[34%] z-25 flex flex-col items-start select-none">
+            <span className="text-xs sm:text-sm md:text-base font-black tracking-tight text-black uppercase">
+              COMFORTABLE
+            </span>
+            <div className="relative inline-block mt-0.5">
+              <span className="text-xs sm:text-sm md:text-base font-black tracking-tight text-black uppercase">
+                IS EXPENSIVE
               </span>
+              {/* Hand-drawn wavy underline */}
+              <svg
+                className="absolute -bottom-1.5 left-0 w-full h-3 pointer-events-none"
+                viewBox="0 0 110 10"
+                fill="none"
+              >
+                <path
+                  d="M 2 5 Q 12 1 22 5 T 42 5 T 62 5 T 82 5 T 108 5"
+                  stroke="#FF3700"
+                  strokeWidth="2.8"
+                  strokeLinecap="round"
+                />
+              </svg>
             </div>
           </div>
         </div>
 
-        {/* BOTTOM HUGE TEXT: "PERFORMS" */}
-        <div className="relative z-10 w-full text-center select-none pointer-events-none">
-          <h2 className="font-hero-bold text-[13.5vw] sm:text-[14.5vw] lg:text-[14vw] text-[#FF3700] tracking-[-0.05em] leading-[0.82] uppercase transform -skew-x-[6deg]">
-            PERFORMS
-          </h2>
+        {/* BOTTOM WORDMARK: "PERFORMS" (Exact Warped Vector Graphic from Figma) */}
+        <div className="relative z-10 w-full flex items-center justify-center shrink-0 pointer-events-none select-none pb-1">
+          <Image
+            src="/performs.png"
+            alt="PERFORMS"
+            width={1024}
+            height={154}
+            className="w-[96%] max-w-[1380px] max-h-[14vh] h-auto object-contain"
+            priority
+          />
         </div>
       </div>
 
-      {/* Bottom Proof Section: Client Logos */}
+      {/* Bottom Proof Section: Client Logos Bar with Grid Dividers */}
       <ClientLogos />
     </section>
   );

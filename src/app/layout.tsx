@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Montserrat } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat, Anton } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,6 +19,12 @@ const montserrat = Montserrat({
   style: ["normal", "italic"],
 });
 
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "Upthrust — Bold Design That Performs",
   description: "Identity, Experience, Motion. Strategy is cheaper, comfortable is expensive.",
@@ -26,7 +32,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable}`}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${anton.variable}`}
+    >
       <body className="antialiased selection:bg-[#FF3B00] selection:text-white">{children}</body>
     </html>
   );

@@ -3,6 +3,7 @@
 @theme {
   --font-display: var(--font-montserrat), system-ui, -apple-system, sans-serif;
   --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-condensed: var(--font-anton), Impact, "Arial Narrow", sans-serif;
   --color-brand-orange: #FF3700;
   --color-brand-orange-hover: #E03000;
 }
