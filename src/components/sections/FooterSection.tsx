@@ -20,17 +20,17 @@ export function FooterSection() {
   return (
     <footer
       id="contact"
-      className="relative w-full bg-black text-white overflow-hidden flex flex-col justify-between select-none"
+      className="relative w-full bg-black text-white overflow-hidden flex flex-col justify-between select-none pb-8 sm:pb-12"
     >
       {/* Top Section: "UPTHRUST [FLOWER] DESIGN" */}
-      <div className="relative w-full pt-20 sm:pt-28 md:pt-36 lg:pt-44 px-4 sm:px-6 md:px-8 flex items-end justify-center overflow-visible">
-        <div className="inline-flex items-end justify-center font-[family-name:var(--font-condensed)] text-white uppercase tracking-tight text-[12vw] sm:text-[12.2vw] md:text-[12.5vw] lg:text-[12.8vw] xl:text-[180px] leading-[0.88] select-none">
+      <div className="relative w-full pt-12 sm:pt-24 md:pt-36 lg:pt-44 px-2 sm:px-6 md:px-8 flex items-end justify-center overflow-hidden">
+        <div className="inline-flex items-end justify-center font-[family-name:var(--font-condensed)] text-white uppercase tracking-tight text-[10.8vw] sm:text-[12.2vw] md:text-[12.5vw] lg:text-[12.8vw] xl:text-[180px] leading-[0.88] select-none max-w-full">
           {/* UPTHRUST */}
           <span className="shrink-0">UPTHRUST</span>
 
           {/* Exact Brand Flower / Trefoil tightly fitted between UPTHRUST and DESIGN */}
-          <span className="relative shrink-0 flex items-end justify-center mx-1.5 sm:mx-2 md:mx-2.5 -mb-[0.25vw] pb-0">
-            <span className="relative inline-block w-[4.4vw] h-[3.8vw] min-w-[32px] min-h-[28px] max-w-[62px] max-h-[54px]">
+          <span className="relative shrink-0 flex items-end justify-center mx-1 sm:mx-2 md:mx-2.5 -mb-[0.2vw] pb-0">
+            <span className="relative inline-block w-[4vw] h-[3.4vw] min-w-[22px] min-h-[19px] sm:min-w-[32px] sm:min-h-[28px] max-w-[62px] max-h-[54px]">
               <Image
                 src="/footer-flower.png"
                 alt="Upthrust Brand Emblem"
@@ -104,7 +104,7 @@ export function FooterSection() {
           </div>
 
           {/* Bottom Left Note */}
-          <div className="pt-20 sm:pt-28 lg:pt-36">
+          <div className="pt-6 sm:pt-16 lg:pt-36">
             <p className="text-xs text-zinc-500 font-normal">
               Lorem ipsum dolor sit amet consectetur
             </p>

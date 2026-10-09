@@ -3,7 +3,7 @@ import { User, FileText, AlertTriangle } from "lucide-react";
 
 export function StrategyMockup() {
   return (
-    <div className="relative w-full h-[400px] sm:h-[460px] md:h-[500px] rounded-2xl bg-[#faf7f2] border border-[#e5ded6] shadow-2xl overflow-hidden flex flex-col text-zinc-900 select-none">
+    <div className="relative w-full h-[190px] xs:h-[220px] sm:h-[320px] md:h-[420px] lg:h-[490px] rounded-xl sm:rounded-2xl bg-[#faf7f2] border border-[#e5ded6] shadow-2xl overflow-hidden flex flex-col text-zinc-900 select-none">
       {/* Subtle Dot Grid Background Pattern like Miro / FigJam */}
       <div
         className="absolute inset-0 pointer-events-none opacity-40"

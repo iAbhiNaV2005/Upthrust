@@ -3,7 +3,8 @@ import React from "react";
 export function ClientLogos() {
   return (
     <div className="relative w-full border-t border-zinc-200 bg-white z-20 shrink-0">
-      <div className="w-full grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 divide-x divide-zinc-200 h-20 md:h-22 items-center">
+      {/* Desktop Grid Layout (7 columns with divider borders) */}
+      <div className="hidden md:grid md:grid-cols-7 divide-x divide-zinc-200 h-20 md:h-22 items-center w-full">
         {/* Metric Cell */}
         <div className="px-4 py-2 flex flex-col justify-center h-full">
           <span className="text-2xl lg:text-3xl font-extrabold tracking-tight text-black leading-none">
@@ -55,9 +56,59 @@ export function ClientLogos() {
         </div>
 
         {/* L'Oréal 2nd */}
-        <div className="hidden md:flex px-4 items-center justify-center h-full group">
+        <div className="px-4 flex items-center justify-center h-full group">
           <span className="font-serif tracking-[0.2em] text-base lg:text-lg font-bold text-black uppercase transition-transform group-hover:scale-105">
             L&apos;ORÉAL
+          </span>
+        </div>
+      </div>
+
+      {/* Mobile Layout: Metric bar + cleanly spaced, horizontally scrollable brand logos */}
+      <div className="md:hidden flex flex-col w-full">
+        {/* Metric Bar */}
+        <div className="px-4 py-1.5 flex items-center justify-between border-b border-zinc-100 bg-zinc-50/60">
+          <div className="flex items-center gap-2">
+            <span className="text-lg font-extrabold tracking-tight text-black leading-none">
+              100+
+            </span>
+            <span className="text-[10px] font-medium text-zinc-600 leading-tight">
+              Brands trusted us to define how they&apos;re seen.
+            </span>
+          </div>
+        </div>
+
+        {/* Brand Logos Row */}
+        <div className="w-full overflow-x-auto py-2.5 px-4 flex items-center justify-between gap-5 select-none">
+          {/* Zomato */}
+          <span className="text-black font-extrabold tracking-tighter text-lg lowercase italic font-sans shrink-0">
+            zomato
+          </span>
+
+          {/* Bosch */}
+          <div className="flex items-center gap-1.5 shrink-0">
+            <svg viewBox="0 0 40 40" className="h-4 w-4 fill-none stroke-black stroke-[3]">
+              <circle cx="20" cy="20" r="16" />
+              <line x1="8" y1="14" x2="32" y2="14" strokeWidth="2.5" />
+              <line x1="8" y1="26" x2="32" y2="26" strokeWidth="2.5" />
+              <line x1="14" y1="14" x2="14" y2="26" strokeWidth="2.5" />
+              <line x1="26" y1="14" x2="26" y2="26" strokeWidth="2.5" />
+            </svg>
+            <span className="font-black text-xs tracking-wider text-black">BOSCH</span>
+          </div>
+
+          {/* L'Oréal */}
+          <span className="font-serif tracking-[0.16em] text-xs font-bold text-black uppercase shrink-0">
+            L&apos;ORÉAL
+          </span>
+
+          {/* Vega */}
+          <span className="font-black tracking-[0.15em] text-xs text-black uppercase shrink-0">
+            VEGA
+          </span>
+
+          {/* Dell */}
+          <span className="font-black tracking-wider text-sm text-black flex items-center shrink-0">
+            D<span className="inline-block transform -rotate-12 scale-110 origin-center">E</span>LL
           </span>
         </div>
       </div>

@@ -134,8 +134,8 @@ export function ServicesSection() {
       ref={containerRef}
       className="relative w-full h-[400vh] bg-black text-white"
     >
-      {/* Sticky Fullscreen Viewport (100vh / Edge-to-Edge) */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between py-8 md:py-12 lg:py-16 px-6 sm:px-10 md:px-16 lg:px-24 select-none">
+      {/* Sticky Fullscreen Viewport (100dvh / Edge-to-Edge) */}
+      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden flex flex-col justify-between py-4 sm:py-8 md:py-12 lg:py-16 px-4 sm:px-10 md:px-16 lg:px-24 select-none">
         {/* Background 3D Glossy Orange Curve Canvas (Full-bleed Zoomed, moves left-to-right with scroll) */}
         <div className="absolute inset-0 pointer-events-none z-10 opacity-95">
           <DynamicCurveCanvas scrollProgress={smoothProgress} className="w-full h-full" />
@@ -177,7 +177,7 @@ export function ServicesSection() {
                   willChange: "opacity, transform",
                   transition: "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
-                className="absolute inset-0 w-full h-full flex flex-col justify-between"
+                className="absolute inset-0 w-full h-full flex flex-col justify-between overflow-y-auto lg:overflow-visible no-scrollbar"
               >
                 {/* Top Section Header — stagger delay 0ms */}
                 <div
@@ -188,19 +188,19 @@ export function ServicesSection() {
                     transition: "opacity 0.55s ease-out 0s, transform 0.55s ease-out 0s",
                   }}
                 >
-                  <span className="text-xs md:text-sm font-semibold tracking-widest text-zinc-400 uppercase mb-2">
+                  <span className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-widest text-zinc-400 uppercase mb-1 sm:mb-2">
                     {service.category}
                   </span>
-                  <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white">
+                  <h2 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
                     {service.title}
                   </h2>
                 </div>
 
                 {/* Content Grid: Left Mockup Card, Right Copy & Contact */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center flex-1 my-4 min-h-0">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-6 lg:gap-16 items-center flex-1 my-1.5 sm:my-4 min-h-0">
                   {/* Left Visual Mockup — stagger delay 100ms */}
                   <div
-                    className="lg:col-span-6 w-full relative z-20 drop-shadow-2xl"
+                    className="lg:col-span-6 w-full relative z-20 drop-shadow-2xl flex items-center justify-center shrink-0"
                     style={{
                       opacity: childOpacity,
                       transform: `translateY(${childSlide}px)`,
@@ -211,10 +211,10 @@ export function ServicesSection() {
                   </div>
 
                   {/* Right Column: Copy, Bullets, and Contact CTA */}
-                  <div className="lg:col-span-6 flex flex-col items-start gap-5 lg:gap-7 relative z-20">
+                  <div className="lg:col-span-6 flex flex-col items-start gap-2.5 sm:gap-5 lg:gap-7 relative z-20">
                     {/* Tagline / Subtitle — stagger delay 120ms */}
                     <p
-                      className="text-xl sm:text-2xl lg:text-3xl font-medium text-zinc-100 leading-snug"
+                      className="text-xs sm:text-lg md:text-2xl lg:text-3xl font-medium text-zinc-100 leading-snug line-clamp-2 sm:line-clamp-none"
                       style={{
                         opacity: childOpacity,
                         transform: `translateY(${childSlide}px)`,
@@ -226,7 +226,7 @@ export function ServicesSection() {
 
                     {/* Bullet points with 4-point star icons — stagger delay 200ms */}
                     <ul
-                      className="flex flex-col gap-3 my-1"
+                      className="flex flex-col gap-1.5 sm:gap-3 my-0.5 sm:my-1"
                       style={{
                         opacity: childOpacity,
                         transform: `translateY(${childSlide}px)`,
@@ -234,11 +234,11 @@ export function ServicesSection() {
                       }}
                     >
                       {service.bullets.map((bullet, bIdx) => (
-                        <li key={bIdx} className="flex items-center gap-3 text-base sm:text-lg font-medium text-zinc-200">
+                        <li key={bIdx} className="flex items-center gap-2 sm:gap-3 text-xs sm:text-base lg:text-lg font-medium text-zinc-200">
                           {/* 4-point star icon */}
                           <svg
                             viewBox="0 0 24 24"
-                            className="w-4 h-4 text-orange-400 fill-orange-400 shrink-0"
+                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-orange-400 fill-orange-400 shrink-0"
                           >
                             <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                           </svg>
@@ -250,7 +250,7 @@ export function ServicesSection() {
                     {/* Secondary Note if present — stagger delay 280ms */}
                     {service.note && (
                       <p
-                        className="text-xs sm:text-sm text-zinc-400 italic max-w-lg leading-relaxed border-l-2 border-zinc-700 pl-3"
+                        className="text-[10px] sm:text-xs md:text-sm text-zinc-400 italic max-w-lg leading-relaxed border-l-2 border-zinc-700 pl-2 sm:pl-3 line-clamp-2 sm:line-clamp-none"
                         style={{
                           opacity: childOpacity,
                           transform: `translateY(${childSlide}px)`,
@@ -263,7 +263,7 @@ export function ServicesSection() {
 
                     {/* Contact Button matching Figma — stagger delay 340ms */}
                     <div
-                      className="pt-2"
+                      className="pt-1 sm:pt-2"
                       style={{
                         opacity: childOpacity,
                         transform: `translateY(${childSlide}px)`,
@@ -272,7 +272,7 @@ export function ServicesSection() {
                     >
                       <a
                         href="#contact"
-                        className="inline-flex items-center justify-center bg-white hover:bg-zinc-100 text-[#FF3700] px-8 py-3.5 text-base sm:text-lg font-extrabold tracking-wider uppercase transition-transform hover:scale-105 active:scale-95 shadow-xl shadow-white/10 cursor-pointer"
+                        className="inline-flex items-center justify-center bg-white hover:bg-zinc-100 text-[#FF3700] px-5 py-2 sm:px-8 sm:py-3.5 text-xs sm:text-base lg:text-lg font-extrabold tracking-wider uppercase transition-transform hover:scale-105 active:scale-95 shadow-xl shadow-white/10 cursor-pointer"
                       >
                         CONTACT
                       </a>
@@ -281,7 +281,7 @@ export function ServicesSection() {
                 </div>
 
                 {/* Bottom padding balance */}
-                <div className="h-2 shrink-0" />
+                <div className="h-1 sm:h-2 shrink-0" />
               </div>
             );
           })}
